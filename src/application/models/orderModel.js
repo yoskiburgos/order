@@ -4,14 +4,14 @@
 
 module.exports.getParametro = async envio => {
     var xcod=0;
-    try{
+    try{    
         const db = envio.request.server.plugins.sql.client;
         const codParametro = envio.codParametro;
         const res = await db.orderPicked.getParametro( {codParametro} );
-        xcod = parseInt(res.recordset[0].XPARAM_VALOR);
+        xcod = parseInt(res.recordset[0].XPARAM_VALOR);  
     }catch(err){  
         console.log("Error getParametro="+err);
-        return null;
+        return null ;
     }
     return xcod;
 };
@@ -87,7 +87,7 @@ module.exports.existeEnPosVirtual = async request  => {
 
     return flagPos;
 }
-
+ 
 module.exports.atgGetExisteOrden = async request  => {
     try{
         const db = request.server.plugins.sql.client;

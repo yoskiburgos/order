@@ -44,4 +44,4 @@ const client = async (server, config) => {
   };
 };
 
-module.exports = client;
+module.exports = client; 

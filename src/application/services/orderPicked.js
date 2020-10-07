@@ -1,16 +1,24 @@
-"use strict"; 
+"use strict";  
 const uuid = require('uuid');
 const modelo = require('../models/orderModel');
+
+const configuracion = require('../config');
 
 
 const orderPicked = async request => {
   var mensaje = {};
   try{
+    request.payload.Body["UserID"] = configuracion.IdUsuario;
+    request.payload.Body["OrderTypeID"] = configuracion.IdTipoOC;
 
+    
+    
     mensaje = await crearOrden(request);
   }catch(err){
     mensaje ={"codigo":-1,"mensaje":err};
-  }
+    //Envio de la notificacion
+
+ }
   
 
   return mensaje; 
